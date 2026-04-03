@@ -8,6 +8,8 @@ require (
 )
 
 require (
-	github.com/emersion/go-ical v0.0.0-20240127095438-fc1c9d8fb2b6 // indirect
+	github.com/emersion/go-ical v0.0.0-20250609112844-439c63cef608 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 )
+
+replace github.com/emersion/go-webdav => github.com/What-is-water93/go-webdav v0.0.0-20260402174752-9891abf9bbba

@@ -1,1 +1,3 @@
 caldav-cli
+.env
+.envrc
