@@ -13,7 +13,8 @@ func Root() *cli.Command {
 		},
 		Commands: []*cli.Command{
 			listCmd(),
-			// uploadCmd(),
+			uploadCmd(),
+			eventsCmd(),
 		},
 	}
 }
