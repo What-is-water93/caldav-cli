@@ -1,0 +1,11 @@
+[tasks.build]
+description = "Build the CLI"
+run = "go build ."
+
+[tasks.ge]
+description = "Run the code"
+run = "go run ."
+
+[tasks.gu]
+description = "Update all dependencies"
+run = "go get -u"
