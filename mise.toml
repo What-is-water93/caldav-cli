@@ -1,6 +1,6 @@
 [tasks.build]
 description = "Build the CLI"
-run = "go build ."
+run = "go build -ldflags \"-X main.version=$(git rev-parse --short HEAD)\" ."
 
 [tasks.ge]
 description = "Run the code"

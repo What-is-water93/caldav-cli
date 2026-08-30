@@ -6,7 +6,6 @@ import (
 	"os"
 	"strings"
 
-	"github.com/What-is-water93/caldav-cli/internal/caldav"
 	ical "github.com/emersion/go-ical"
 	"github.com/urfave/cli/v3"
 	"golang.org/x/image/colornames"
@@ -67,15 +66,7 @@ func uploadCmd() *cli.Command {
 				return fmt.Errorf("decoding ICS file: %w", err)
 			}
 
-			client, err := caldav.NewClient(
-				ctx,
-				cmd.Root().String("url"),
-				cmd.Root().String("username"),
-				cmd.Root().String("password"),
-			)
-			if err != nil {
-				return err
-			}
+			client := clientFromContext(ctx)
 
 			calendarPath, err := client.ResolveCalendar(ctx, cmd.String("calendar"))
 			if err != nil {
