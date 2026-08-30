@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/What-is-water93/caldav-cli/internal/caldav"
-
 	"github.com/urfave/cli/v3"
 )
 
@@ -14,17 +12,7 @@ func listCmd() *cli.Command {
 		Name:  "list",
 		Usage: "List all calendars on the server",
 		Action: func(ctx context.Context, cmd *cli.Command) error {
-			client, err := caldav.NewClient(
-				ctx,
-				cmd.Root().String("url"),
-				cmd.Root().String("username"),
-				cmd.Root().String("password"),
-			)
-			if err != nil {
-				return err
-			}
-
-			calendars, err := client.ListCalendars(ctx)
+			calendars, err := clientFromContext(ctx).ListCalendars(ctx)
 			if err != nil {
 				return err
 			}

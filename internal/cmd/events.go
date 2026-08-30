@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/What-is-water93/caldav-cli/internal/caldav"
 	ical "github.com/emersion/go-ical"
 	"github.com/urfave/cli/v3"
 )
@@ -68,15 +67,7 @@ func eventsCmd() *cli.Command {
 			},
 		},
 		Action: func(ctx context.Context, cmd *cli.Command) error {
-			client, err := caldav.NewClient(
-				ctx,
-				cmd.Root().String("url"),
-				cmd.Root().String("username"),
-				cmd.Root().String("password"),
-			)
-			if err != nil {
-				return err
-			}
+			client := clientFromContext(ctx)
 
 			calendarPath, err := client.ResolveCalendar(ctx, cmd.String("calendar"))
 			if err != nil {
