@@ -9,9 +9,10 @@ import (
 
 func Root(version string) *cli.Command {
 	return &cli.Command{
-		Name:    "caldav-cli",
-		Usage:   "CalDAV command-line client",
-		Version: version,
+		Name:                  "caldav-cli",
+		Usage:                 "CalDAV command-line client",
+		Version:               version,
+		EnableShellCompletion: true,
 		Flags: []cli.Flag{
 			&cli.StringFlag{Name: "url", Usage: "CalDAV server URL", Sources: cli.EnvVars("CALDAV_URL"), Required: true},
 			&cli.StringFlag{Name: "username", Usage: "CalDAV username", Sources: cli.EnvVars("CALDAV_USERNAME"), Required: true},
